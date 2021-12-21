@@ -15,12 +15,13 @@ public class FirstServlet implements Servlet {
 
     @Override
     public ServletConfig getServletConfig() {
-        return null;
+        return this.config;
     }
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        res.getWriter().println("<h1>first response</h1>");
+
+        res.getWriter().print("<h1>first response</h1>");
     }
 
     @Override
