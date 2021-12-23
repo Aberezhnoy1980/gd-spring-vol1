@@ -26,4 +26,10 @@ public class Config {
     public CartService cartService() {
         return new CartService();
     }
+
+    @Bean
+    @Scope("prototype")
+    public Cart cart() {
+        return new Cart();
+    }
 }

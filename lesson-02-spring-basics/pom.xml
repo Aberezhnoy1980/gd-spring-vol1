@@ -12,11 +12,12 @@
     <artifactId>lesson-02-spring-basics</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>ru.aberezhnoy</groupId>
-            <artifactId>lesson-01-servlet-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>ru.aberezhnoy</groupId>-->
+<!--            <artifactId>lesson-01-servlet-api</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>

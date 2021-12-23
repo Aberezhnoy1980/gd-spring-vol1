@@ -2,6 +2,7 @@ package ru.aberezhnoy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.ls.LSOutput;
 import ru.aberezhnoy.persist.Product;
 import ru.aberezhnoy.persist.ProductRepository;
 
@@ -18,9 +19,7 @@ public class ProductService {
         productRepository.save(new Product(null, "Product 1"));
         productRepository.save(new Product(null, "Product 2"));
         productRepository.save(new Product(null, "Product 3"));
-    }
-
-    public long count() {
-        return productRepository.findAll().size();
+        productRepository.save(new Product(null, "Product 4"));
+        productRepository.save(new Product(null, "Product 5"));
     }
 }
