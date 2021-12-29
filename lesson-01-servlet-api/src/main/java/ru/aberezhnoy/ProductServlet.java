@@ -30,7 +30,8 @@ public class ProductServlet extends HttpServlet {
         if (req.getParameter("id") != null) {
             long id = parseLong(req.getParameter("id"));
             wr.println("<label><a href=product>К списку</a></label>");
-            wr.println("<h3>Product info: id - " + productRepository.findById(id).getId() +", name - " + productRepository.findById(id).getName() + "</h3>");
+            wr.println("<h3>Product info: id - " + productRepository.findById(id).getId() +", name - "
+                    + productRepository.findById(id).getName() + "</h3>");
 
             wr.println("<table>");
             wr.println("<tr>");
