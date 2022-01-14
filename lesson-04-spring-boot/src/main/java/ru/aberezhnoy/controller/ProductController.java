@@ -50,13 +50,6 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    @PostMapping("/{id}")
-    public String delete(Long id, Model model) {
-        model.addAttribute("product", productRepository.findById(id));
-        productRepository.delete(id);
-        return "redirect:/product";
-    }
-
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFoundExceptionHandler(NotFoundException ex, Model model) {
