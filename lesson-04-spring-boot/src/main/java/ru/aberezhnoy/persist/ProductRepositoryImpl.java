@@ -23,6 +23,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         this.save(new Product("Product 1", "Description 1", new BigDecimal("120.50")));
         this.save(new Product("Product 2", "Description 2", new BigDecimal("250.43")));
         this.save(new Product("Product 3", "Description 3", new BigDecimal("167.61")));
+        this.save(new Product("Product 4", "Description 4", new BigDecimal("67.23")));
     }
 
     @Override

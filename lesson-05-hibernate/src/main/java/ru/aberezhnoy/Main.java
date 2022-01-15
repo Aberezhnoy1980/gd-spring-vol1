@@ -1,20 +1,41 @@
 package ru.aberezhnoy;
 
 import org.hibernate.cfg.Configuration;
+import ru.aberezhnoy.dao.ProductDao;
+import ru.aberezhnoy.dao.ProductDaoImpl;
+import ru.aberezhnoy.entity.Product;
 import ru.aberezhnoy.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 
     public static void main(String[] args) {
+
         EntityManagerFactory emFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
 
         EntityManager em = emFactory.createEntityManager();
+
+        // Проверка методов
+//        ProductDaoImpl pd = new ProductDaoImpl(emFactory);
+//        List<Product> p = pd.findAll();
+//        System.out.println(p);
+
+//        Optional<Product> p1 = pd.findById(3L);
+//        System.out.println(p1);
+
+//        Product p3 = new Product("Product 6", "description 6", new BigDecimal("111.22"));
+//        pd.saveOrUpdate(p3);
+
+//        pd.deleteById(6L);
+//        System.out.println(pd.findAll());
+
 
         // INSERT
 

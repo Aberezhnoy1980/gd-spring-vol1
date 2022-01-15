@@ -18,5 +18,6 @@
         <property name="hibernate.format_sql">true</property>
 
         <mapping class="ru.aberezhnoy.entity.User"/>
+        <mapping class="ru.aberezhnoy.entity.Product"/>
     </session-factory>
 </hibernate-configuration>
