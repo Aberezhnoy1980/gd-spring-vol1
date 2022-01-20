@@ -1,16 +1,9 @@
 package ru.aberezhnoy;
 
 import org.hibernate.cfg.Configuration;
-import ru.aberezhnoy.dao.ProductDao;
-import ru.aberezhnoy.dao.ProductDaoImpl;
-import ru.aberezhnoy.entity.Product;
-import ru.aberezhnoy.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 
 public class Main {
 
