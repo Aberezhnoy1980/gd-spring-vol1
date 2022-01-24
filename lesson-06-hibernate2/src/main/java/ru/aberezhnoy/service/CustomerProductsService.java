@@ -25,6 +25,9 @@ public class CustomerProductsService {
         this.orderListDao = orderListDao;
     }
 
+    public CustomerProductsService() {
+    }
+
     public List<Product> findProductsByCustomerId(Long customerId) {
         return productDao.findProductsByCustomerId(customerId);
     }

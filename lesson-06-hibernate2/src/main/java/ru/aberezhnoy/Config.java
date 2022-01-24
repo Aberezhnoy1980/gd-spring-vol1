@@ -3,11 +3,11 @@ package ru.aberezhnoy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import ru.aberezhnoy.dao.CustomerDao;
 import ru.aberezhnoy.dao.Dao;
 import ru.aberezhnoy.dao.OrderListDao;
 import ru.aberezhnoy.dao.ProductDao;
+import ru.aberezhnoy.service.CustomerProductsService;
 
 @ComponentScan("ru.aberezhnoy")
 @Configuration
@@ -16,6 +16,11 @@ public class Config {
     @Bean
     public EntityManagerFactoryInit entityManagerFactoryInit() {
         return new EntityManagerFactoryInit();
+    }
+
+    @Bean
+    public CustomerProductsService customerProductsService() {
+        return new CustomerProductsService();
     }
 
     @Bean
