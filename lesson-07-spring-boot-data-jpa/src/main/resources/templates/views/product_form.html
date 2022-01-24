@@ -16,7 +16,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">EShop</a>
+    <a class="navbar-brand" th:href="@{/product}">EShop</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" th:href="@{/product}">List</a>
             </li>
         </ul>
     </div>
@@ -35,37 +35,43 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/product/new}">Add Product</a>
-        </div>
+            <form th:action="@{/product}" method="post" th:object="${product}">
+                <input type="hidden" id="id" name="id" th:field="*{id}">
 
-        <div class="col-12">
-            <table class="table table-bordered my-2">
-                <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="product : ${products}">
-                    <th scope="row" th:text="${product.id}">id</th>
-                    <td th:text="${product.name}">name</td>
-                    <td th:text="${product.description}">description</td>
-                    <td th:text="${product.price}">price</td>
-                    <td>
-                        <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger" th:href="@{/product/{id}/delete(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input th:field="*{name}" type="text" class="form-control" id="name" name="username" placeholder="Enter product name">
+                    <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <input th:field="*{description}" type="text" class="form-control" id="description" name="description" placeholder="Enter product description">
+                    <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input th:field="*{price}" type="number" class="form-control" id="price" name="price" placeholder="Enter product price">
+                    <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" id="category" th:field="*{categoryId}" required>
+                        <option th:each="cat : ${categories}"
+                                th:text="${cat.name}"
+                                th:value="${cat.id}"
+                                th:selected="${product.categoryId == cat.id}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 </div>
-<!-- th:action="@{/product}" method="post" th:object="${product} -->
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -77,5 +83,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
+
 </html>
