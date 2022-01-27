@@ -39,7 +39,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://80.78.248.30:8080/manager/text</url>
+                    <url>http://localhost:8080/manager/text</url>
                     <path>/servlet-app</path>
                 </configuration>
             </plugin>

@@ -58,7 +58,7 @@ public class ProductController {
                 nameFilter,
                 page.orElse(1) -1,
                 size.orElse(5),
-                sort.filter(s -> !s.isBlank()).orElse("id")
+                sort.orElse("id")
         ));
         return "product";
     }
