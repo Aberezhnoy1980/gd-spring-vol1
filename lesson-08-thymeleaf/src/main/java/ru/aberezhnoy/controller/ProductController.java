@@ -3,6 +3,7 @@ package ru.aberezhnoy.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import ru.aberezhnoy.service.ProductService;
 import ru.aberezhnoy.service.dto.ProductDto;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +36,8 @@ public class ProductController {
     @GetMapping
     public String listPage(Model model,
                            @RequestParam("nameFilter") Optional<String> nameFilter,
+                           @RequestParam("minPriceFilter") Optional<BigDecimal> minPriceFilter,
+                           @RequestParam("maxPriceFilter") Optional<BigDecimal> maxPriceFilter,
                            @RequestParam("page") Optional<Integer> page,
                            @RequestParam("size") Optional<Integer> size,
                            @RequestParam("sort") Optional<String> sort) {
@@ -41,9 +45,11 @@ public class ProductController {
 
         model.addAttribute("products", productService.findAll(
                 nameFilter,
+                minPriceFilter,
+                maxPriceFilter,
                 page.orElse(1) -1,
                 size.orElse(5),
-                sort.orElse("id")
+                sort.filter(s -> !s.isBlank()).orElse("id")
         ));
         return "product";
     }

@@ -2,9 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th th:fragment="sort_header(header, column)" scope="col">[[${header}]]
-    <a th:href="@{/product(nameFilter=${param.nameFilter}, page=${num}, size=${param.size}, sort=${column})}">
-            <i class="fa fa-sort-up"></i>
-        </a>
+    <a th:href="@{/product(nameFilter=${param.nameFilter}, minPriceFilter=${param.minPriceFilter}, maxPriceFilter=${param.maxPriceFilter}, page=${num}, size=${param.size}, sort=${column})}">
+        <i style="position: absolute; padding-left: 5px" class="fa fa-sort-up"></i>
+    </a>
+    <a th:href="@{/product(nameFilter=${param.nameFilter}, minPriceFilter=${param.minPriceFilter}, maxPriceFilter=${param.maxPriceFilter}, page=${num}, size=${param.size}, sort=${column})}">
+        <i style="position: absolute; padding-left: 5px" class="fa fa-sort-down"></i>
+    </a>
 </th>
 
 </html>
