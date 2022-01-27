@@ -31,21 +31,6 @@ public class ProductController {
         this.categoryRepository = categoryRepository;
     }
 
-//    @GetMapping
-//    public String listPage(Model model,
-//                           @RequestParam("nameFilter") Optional<String> nameFilter) {
-//        logger.info("Product filter with name pattern {}", nameFilter.orElse(null));
-//
-//        List<Product> products;
-//        if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
-//            products = productRepository.findAllByNameLike(nameFilter.get());
-//        } else {
-//            products = productRepository.findAll();
-//        }
-//        model.addAttribute("products", products);
-//        return "product";
-//    }
-
     @GetMapping
     public String listPage(Model model,
                            @RequestParam("nameFilter") Optional<String> nameFilter,
