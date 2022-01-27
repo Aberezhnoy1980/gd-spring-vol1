@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lesson-02-spring-basics</artifactId>
+    <artifactId>lesson-02-spring-basic-lesson</artifactId>
 
     <dependencies>
         <dependency>
