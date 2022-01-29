@@ -1,13 +1,15 @@
 package ru.aberezhnoy.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import ru.aberezhnoy.service.dto.ProductDto;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public interface ProductService {
 
-    Page<ProductDto> findAll(Optional<String> nameFilter, Integer page, Integer size, String sort);
+    Page<ProductDto> findAll(Optional<String> nameFilter, Optional<BigDecimal> minPriceFilter, Optional<BigDecimal> maxPriceFilter, Integer page, Integer size, String sort);
 
     Optional<ProductDto> findById(Long Id);
 

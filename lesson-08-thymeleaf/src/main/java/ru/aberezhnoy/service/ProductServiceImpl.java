@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import ru.aberezhnoy.persist.*;
 import ru.aberezhnoy.service.dto.ProductDto;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -25,10 +26,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDto> findAll(Optional<String> nameFilter, Integer page, Integer size, String sort) {
+    public Page<ProductDto> findAll(Optional<String> nameFilter, Optional<BigDecimal> minPriceFilter, Optional<BigDecimal> maxPriceFilter, Integer page, Integer size, String sort) {
         Specification<Product> spec = Specification.where(null);
         if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
-            spec.and(ProductSpecification.nameLike(nameFilter.get()));
+           spec = spec.and(ProductSpecification.nameLike(nameFilter.get()));
+        }
+        if (minPriceFilter.isPresent()) {
+           spec = spec.and(ProductSpecification.minPrice(minPriceFilter.get()));
+        }
+        if (maxPriceFilter.isPresent()) {
+           spec = spec.and(ProductSpecification.maxPrice(maxPriceFilter.get()));
         }
         return productRepository.findAll(spec, PageRequest.of(page, size, Sort.by(sort)))
                 .map(ProductServiceImpl::convertToDto);

@@ -29,7 +29,7 @@
 
                 <div class="form-group">
                     <label>Price</label>
-                    <input th:field="*{price}" type="number" class="form-control" id="price" name="price" placeholder="Enter product price">
+                    <input th:field="*{price}" type="number" class="form-control" step="0.01" id="price" name="price" placeholder="Enter product price">
                     <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
                 </div>
 
