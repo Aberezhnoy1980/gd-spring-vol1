@@ -50,6 +50,12 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @GetMapping("/{id}/delete")
+    public String deleteById(@PathVariable("id") Long id) {
+        productRepository.deleteById(id);
+        return "redirect:/product";
+    }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFoundExceptionHandler(NotFoundException ex, Model model) {

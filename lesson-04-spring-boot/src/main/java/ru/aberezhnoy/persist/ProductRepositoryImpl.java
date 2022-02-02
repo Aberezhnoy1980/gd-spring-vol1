@@ -46,7 +46,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public void delete(long id) {
+    public void deleteById(long id) {
         productMap.remove(id);
     }
 }
