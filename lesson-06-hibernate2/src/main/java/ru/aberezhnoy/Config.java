@@ -37,5 +37,4 @@ public class Config {
     public Dao orderListDao() {
         return new OrderListDao();
     }
-
 }

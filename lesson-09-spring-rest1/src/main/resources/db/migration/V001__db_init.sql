@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `geekBrains_spring_boot_data_jpa_local`;
-CREATE DATABASE `geekBrains_spring_boot_data_jpa_local`;
-USE `geekBrains_spring_boot_data_jpa_local`;
+DROP DATABASE IF EXISTS `spring01`;
+CREATE DATABASE `spring01`;
+USE `spring01`;
 
 DROP TABLE IF EXISTS `categories` CASCADE;
 CREATE TABLE `categories`

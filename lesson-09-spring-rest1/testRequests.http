@@ -1,0 +1,73 @@
+GET http://localhost:8080/spring-boot-data-jpa-app/api/v1/product
+
+###
+
+GET http://localhost:8080/spring-boot-data-jpa-app/api/v1/product/24
+
+###
+
+POST http://localhost:8080/spring-boot-data-jpa-app/api/v1/product
+Content-Type: application/json
+
+{
+  "name": "Product 24",
+  "description": "Description 24",
+  "price": 1000000,
+  "categoryId": 3
+}
+
+###
+
+PUT http://localhost:8080/spring-boot-data-jpa-app/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 24,
+  "name": "Product 24 updated",
+  "description": "Description 24 updated",
+  "price": 10000000,
+  "categoryId": 2
+}
+
+###
+
+PUT http://localhost:8080/spring-boot-data-jpa-app/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 24,
+  "name": "Product 24 updated twice",
+  "price": 1000000,
+  "categoryId": 1
+}
+
+###
+
+DELETE http://localhost:8080/spring-boot-data-jpa-app/api/v1/product/24
+
+###
+
+GET http://localhost:8080/spring-boot-data-jpa-app/api/v1/categories
+
+###
+
+POST http://localhost:8080/spring-boot-data-jpa-app/api/v1/categories
+Content-Type: application/json
+
+{
+  "name": "Category 4"
+}
+
+###
+
+PUT http://localhost:8080/spring-boot-data-jpa-app/api/v1/categories
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Category 4 updated"
+}
+
+###
+
+DELETE http://localhost:8080/spring-boot-data-jpa-app/api/v1/categories/4

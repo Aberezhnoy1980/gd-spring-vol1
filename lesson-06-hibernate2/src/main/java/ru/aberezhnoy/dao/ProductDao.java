@@ -1,6 +1,5 @@
 package ru.aberezhnoy.dao;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.aberezhnoy.EntityManagerFactoryInit;
@@ -8,7 +7,6 @@ import ru.aberezhnoy.entities.Customer;
 import ru.aberezhnoy.entities.Product;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -61,14 +59,12 @@ public class ProductDao implements Dao<Product, Long> {
     }
 
     public List<Product> findProductsByCustomerId(Long customerId) {
-        {
-            return executeForEntityManager(
-                    em -> {
-                        Customer customer = em.find(Customer.class, customerId);
-                        return customer.getProductList();
-                    }
-            );
-        }
+        return executeForEntityManager(
+                em -> {
+                    Customer customer = em.find(Customer.class, customerId);
+                    return customer.getProductList();
+                }
+        );
     }
 
     private <R> R executeForEntityManager(Function<EntityManager, R> function) {

@@ -12,6 +12,6 @@ public class SpringHibernateApplication {
 
         CustomerProductsService service = context.getBean(CustomerProductsService.class);
 
-        service.findProductsByCustomerId(1L);
+        service.findProductById(1L);
     }
 }
