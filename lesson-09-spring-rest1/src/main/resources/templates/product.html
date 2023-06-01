@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/header.html :: navigation">
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <a class="btn btn-primary" th:href="@{/product/new}">Add Product</a>
+        </div>
+
+        <form class="form-inline mt-3" method="get">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="name-filter" class="sr-only">Name filter:</label>
+                <input th:value="${param.nameFilter}" type="text" class="form-control"
+                       name="nameFilter" id="name-filter" placeholder="Text title or symbol">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Find</button>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="minPrice-filter" class="sr-only">MinPrice filter:</label>
+                <input th:value="${param.minPriceFilter}" type="number" class="form-control"
+                       name="minPriceFilter" id="minPrice-filter" placeholder="Price from:">
+                <!--            </div>-->
+                <!--            <button type="submit" class="btn btn-primary mb-2">Go</button>-->
+
+                <!--            <div class="form-group mx-sm-3 mb-2">-->
+
+                <label for="maxPrice-filter" class="sr-only">MaxPrice filter:</label>
+                <input th:value="${param.maxPriceFilter}" type="number" class="form-control"
+                       name="maxPriceFilter" id="maxPrice-filter" placeholder="Price up to:">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Show</button>
+        </form>
+
+        <div class="col-12">
+            <table class="table table-bordered my-2">
+                <thead>
+                <tr>
+                    <th th:replace="fragments/sort_header :: sort_header('Id', 'id')">Id</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Name', 'name')">Name</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Description', 'description')">Description</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Category', 'category.name')">Category</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Price', 'price')">Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:unless="${products.empty}" th:each="product : ${products}">
+                    <th scope="row" th:text="${product.id}">Id</th>
+                    <td th:text="${product.name}">Name</td>
+                    <td th:text="${product.description}">Description</td>
+                    <td th:text="${product.categoryName}">Category</td>
+                    <td th:text="${product.price}">Price</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i
+                                class="fas fa-edit"></i></a>
+                        <form class="d-inline" th:method="delete" th:action="@{/product/{id}(id = ${product.id})}">
+                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr th:if="${products.empty}">
+                    <td colspan="5">No data available</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-12" th:replace="fragments/pagination.html::pagination">
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts">
+</th:block>
+
+</body>
+</html>
