@@ -1,0 +1,28 @@
+<div class="row py-2">
+  <div class="col-12">
+    <a class="btn btn-primary" routerLink="/product">Back to catalogue</a>
+  </div>
+
+  <div class="col-12">
+    <table class="table table-bordered my-2">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let lineItem of lineItems">
+        <th scope="row">{{lineItem.id}}</th>
+        <td>{{lineItem.name}}</td>
+        <td>{{lineItem.price}}</td>
+        <td>
+          <a class="btn btn-danger" (click)="delete(lineItem)"><i class="far fa-trash-alt"></i></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
