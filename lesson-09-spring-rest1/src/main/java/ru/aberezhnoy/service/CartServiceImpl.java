@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class CartServiceImpl implements CartService {
     private final List<LineItem> lineItems;
 
@@ -22,10 +22,10 @@ public class CartServiceImpl implements CartService {
         this.lineItems = new ArrayList<>();
     }
 
-    @JsonCreator
-    public CartServiceImpl(@JsonProperty("lineItems") List<LineItem> lineItems) {
-        this.lineItems = lineItems;
-    }
+//    @JsonCreator
+//    public CartServiceImpl(@JsonProperty("lineItems") List<LineItem> lineItems) {
+//        this.lineItems = lineItems;
+//    }
 
     @Override
     public List<LineItem> showAll() {

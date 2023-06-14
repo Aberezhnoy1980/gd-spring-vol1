@@ -19,9 +19,9 @@ export class CartService {
     return this.http.post<Product>('api/v1/cart', product);
   }
 
-  public removeFromCart(product: Product) {
+  public removeFromCart(lineItem: LineItem) {
     return this.http.delete<Product>('api/v1/cart', ({
-      body: product
+      body: lineItem
     }));
   }
   //

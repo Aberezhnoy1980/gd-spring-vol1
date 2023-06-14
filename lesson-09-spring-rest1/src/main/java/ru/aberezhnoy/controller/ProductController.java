@@ -12,6 +12,7 @@ import ru.aberezhnoy.persist.CategoryRepository;
 import ru.aberezhnoy.service.ProductService;
 import ru.aberezhnoy.service.dto.ProductDto;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Optional;
