@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,12 +41,13 @@ public class UserController {
     }
 
     @GetMapping
-    public String listPage(Model model,
+    public String listPage(Model model, Authentication auth,
                            @RequestParam("nameFilter") Optional<String> nameFilter,
                            @RequestParam("page") Optional<Integer> page,
                            @RequestParam("size") Optional<Integer> size,
                            @RequestParam("sort") Optional<String> sort) {
         LOGGER.info("User list page requested");
+        LOGGER.info("Current user {}", auth.getName());
         model.addAttribute("users", userService.findAll(
                 nameFilter,
                 page.orElse(1) - 1,
