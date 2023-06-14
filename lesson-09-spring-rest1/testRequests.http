@@ -8,6 +8,7 @@ GET http://localhost:8080/spring-boot-data-jpa-app/api/v1/product/24
 
 POST http://localhost:8080/spring-boot-data-jpa-app/api/v1/product
 Content-Type: application/json
+Authorization: Basik admin admin
 
 {
   "name": "Product 24",
